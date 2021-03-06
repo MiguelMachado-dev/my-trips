@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
     "test": "jest",
-    "test:watch": "yarn test --watchAll",
+    "test:watch": "yarn test --watch",
     "generate": "yarn plop --plopfile ./generators/plopfile.js",
     "prepare": "husky install"
   },
