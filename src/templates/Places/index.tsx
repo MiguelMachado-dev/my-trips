@@ -1,12 +1,10 @@
 import Image from 'next/image'
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
 
-import { CheckmarkCircleOutline } from '@styled-icons/evaicons-outline/CheckmarkCircleOutline'
-import { CloseCircleOutline } from '@styled-icons/evaicons-outline/CloseCircleOutline'
-
 import { NextSeo } from 'next-seo'
 
 import LinkWrapper from 'components/LinkWrapper'
+import WentTag from 'components/WentTag'
 import * as S from './styles'
 import { useRouter } from 'next/dist/client/router'
 
@@ -83,19 +81,7 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
           </S.Gallery>
           <S.WentWrapper>
             <h2>Tags:</h2>
-            <S.WentTag went={place.went}>
-              {place.went ? (
-                <h1>
-                  <CheckmarkCircleOutline size={32} />
-                  Já fui!
-                </h1>
-              ) : (
-                <h1>
-                  <CloseCircleOutline size={32} />
-                  Pretendo ir!
-                </h1>
-              )}
-            </S.WentTag>
+            <WentTag place={place} />
           </S.WentWrapper>
         </S.Container>
       </S.Wrapper>
