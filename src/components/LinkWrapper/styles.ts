@@ -3,6 +3,7 @@ import media from 'styled-media-query'
 
 type WrapperProps = {
   right: boolean
+  hasBackground: boolean
 }
 
 export const Wrapper = styled.div<WrapperProps>`
@@ -11,7 +12,8 @@ export const Wrapper = styled.div<WrapperProps>`
   top: var(--medium);
   right: ${(props) => (props.right ? 'var(--medium)' : null)};
   left: ${(props) => (props.right ? null : 'var(--medium)')};
-  color: var(--white);
+  color: ${({ hasBackground }) =>
+    hasBackground ? 'var(--background)' : 'var(--white)'};
 
   cursor: pointer;
   opacity: 1;
@@ -29,19 +31,23 @@ export const Wrapper = styled.div<WrapperProps>`
   }
 
   svg {
-    background-color: var(--highlight);
+    background-color: ${({ hasBackground }) =>
+      hasBackground ? 'var(--highlight)' : null};
     border-radius: 23px;
   }
 
   svg,
   h2 {
-    transition: opacity 0.3s ease-in-out;
+    transition: ${({ hasBackground }) =>
+      hasBackground ? 'opacity 0.3s ease-in-out' : 'color 0.3s ease-in-out'};
   }
 
   &:hover {
     svg,
     h2 {
-      opacity: 0.7;
+      color: ${({ hasBackground }) =>
+        hasBackground ? null : 'var(--highlight)'};
+      opacity: ${({ hasBackground }) => (hasBackground ? '0.7' : null)};
     }
   }
 `

@@ -11,7 +11,7 @@ export type PageTemplateProps = {
 
 const PageTemplate = ({ heading, body }: PageTemplateProps) => (
   <S.Content>
-    <LinkWrapper href="/">
+    <LinkWrapper hasBackground={false} right href="/">
       <CloseOutline size={32} aria-label="Return to home" />
     </LinkWrapper>
 

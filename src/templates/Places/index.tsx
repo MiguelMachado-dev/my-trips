@@ -59,11 +59,11 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
         }}
       />
 
-      <LinkWrapper right href="/">
+      <LinkWrapper hasBackground right href="/">
         <CloseOutline size={32} aria-label="Go back to map" />
       </LinkWrapper>
 
-      <LinkWrapper right={false} href="/">
+      <LinkWrapper hasBackground right={false} href="/">
         <h2>
           <ArrowIosBackOutline size={32} aria-label="Go back to map" />
           Voltar ao mapa
