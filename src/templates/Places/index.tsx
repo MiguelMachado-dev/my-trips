@@ -1,6 +1,9 @@
 import Image from 'next/image'
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
 
+import { CheckmarkCircleOutline } from '@styled-icons/evaicons-outline/CheckmarkCircleOutline'
+import { CloseCircleOutline } from '@styled-icons/evaicons-outline/CloseCircleOutline'
+
 import { NextSeo } from 'next-seo'
 
 import LinkWrapper from 'components/LinkWrapper'
@@ -22,6 +25,7 @@ export type PlacesTemplateProps = {
       text: string
     }
     gallery: ImageProps[]
+    went: boolean
   }
 }
 
@@ -62,11 +66,9 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
       <S.Wrapper>
         <S.Container>
           <S.Heading>{place.name}</S.Heading>
-
           <S.Body
             dangerouslySetInnerHTML={{ __html: place?.description?.html || '' }}
           />
-
           <S.Gallery>
             {place?.gallery?.map((image, index) => (
               <Image
@@ -79,6 +81,22 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
               />
             ))}
           </S.Gallery>
+          <S.WentWrapper>
+            <h2>Tags:</h2>
+            <S.WentTag went={place.went}>
+              {place.went ? (
+                <h1>
+                  <CheckmarkCircleOutline size={32} />
+                  Já fui!
+                </h1>
+              ) : (
+                <h1>
+                  <CloseCircleOutline size={32} />
+                  Pretendo ir!
+                </h1>
+              )}
+            </S.WentTag>
+          </S.WentWrapper>
         </S.Container>
       </S.Wrapper>
     </>

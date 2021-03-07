@@ -67,6 +67,7 @@ export const GET_PLACE_BY_SLUG = gql`
         height
         width
       }
+      went
     }
   }
 `
