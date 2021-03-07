@@ -2400,7 +2400,7 @@ export type GetPlacesQuery = (
   { __typename?: 'Query' }
   & { places: Array<(
     { __typename?: 'Place' }
-    & Pick<Place, 'id' | 'slug' | 'name'>
+    & Pick<Place, 'id' | 'slug' | 'name' | 'went'>
     & { location: (
       { __typename?: 'Location' }
       & Pick<Location, 'latitude' | 'longitude'>

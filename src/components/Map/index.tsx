@@ -1,6 +1,8 @@
 import { useRouter } from 'next/dist/client/router'
 import { MapContainer, TileLayer, Marker, MapConsumer } from 'react-leaflet'
 
+import L from 'leaflet'
+
 import * as S from './styles'
 
 type Place = {
@@ -11,6 +13,7 @@ type Place = {
     latitude: number
     longitude: number
   }
+  went: boolean
 }
 
 export type MapProps = {
@@ -34,6 +37,20 @@ const CustomTileLayer = () => {
     />
   )
 }
+
+const notWentIcon = new L.Icon({
+  iconUrl: 'img/pin-not-went.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+})
+
+const wentIcon = new L.Icon({
+  iconUrl: 'img/pin.png',
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
+  popupAnchor: [0, -40],
+})
 
 const Map = ({ places }: MapProps) => {
   const router = useRouter()
@@ -66,21 +83,38 @@ const Map = ({ places }: MapProps) => {
         </MapConsumer>
 
         <CustomTileLayer />
-        {places?.map(({ id, slug, name, location }) => {
+        {places?.map(({ id, slug, name, location, went }) => {
           const { latitude, longitude } = location
 
-          return (
-            <Marker
-              key={`place${id}`}
-              position={[latitude, longitude]}
-              title={name}
-              eventHandlers={{
-                click: () => {
-                  router.push(`/place/${slug}`)
-                },
-              }}
-            />
-          )
+          if (went) {
+            return (
+              <Marker
+                key={`place${id}`}
+                position={[latitude, longitude]}
+                title={name}
+                icon={wentIcon}
+                eventHandlers={{
+                  click: () => {
+                    router.push(`/place/${slug}`)
+                  },
+                }}
+              />
+            )
+          } else {
+            return (
+              <Marker
+                key={`place${id}`}
+                position={[latitude, longitude]}
+                title={name}
+                icon={notWentIcon}
+                eventHandlers={{
+                  click: () => {
+                    router.push(`/place/${slug}`)
+                  },
+                }}
+              />
+            )
+          }
         })}
       </MapContainer>
     </S.MapWrapper>

@@ -6,8 +6,6 @@ import * as S from './styles'
 import { PlacesTemplateProps } from 'templates/Places'
 
 const WentTag = ({ place }: PlacesTemplateProps) => {
-  console.log(place)
-
   if (place.went) {
     return (
       <S.WentTag went={place.went}>
