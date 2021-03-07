@@ -31,7 +31,7 @@ export default function HomeTemplate({ places }: MapProps) {
           site_name: 'My Trips',
         }}
       />
-      <LinkWrapper href="/about">
+      <LinkWrapper right href="/about">
         <InfoOutline size={32} aria-label="About" />
       </LinkWrapper>
       <Map places={places} />

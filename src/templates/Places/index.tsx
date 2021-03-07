@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
+import { ArrowIosBackOutline } from '@styled-icons/evaicons-outline/ArrowIosBackOutline'
 
 import { NextSeo } from 'next-seo'
 
@@ -57,8 +58,16 @@ export default function PlacesTemplate({ place }: PlacesTemplateProps) {
           ],
         }}
       />
-      <LinkWrapper href="/">
+
+      <LinkWrapper right href="/">
         <CloseOutline size={32} aria-label="Go back to map" />
+      </LinkWrapper>
+
+      <LinkWrapper right={false} href="/">
+        <h2>
+          <ArrowIosBackOutline size={32} aria-label="Go back to map" />
+          Voltar ao mapa
+        </h2>
       </LinkWrapper>
 
       <S.Wrapper>
