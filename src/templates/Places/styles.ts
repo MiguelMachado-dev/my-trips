@@ -19,6 +19,12 @@ export const Body = styled.div`
   p {
     margin-bottom: var(--medium);
   }
+
+  ol,
+  ul {
+    font-size: 2rem;
+    line-height: var(--medium);
+  }
 `
 
 export const Gallery = styled.div`
